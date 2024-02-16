@@ -1,0 +1,63 @@
+Enunciado oferecido por Professor Gilvan Justino
+
+O programa que você pretende desenvolver consiste em um validador de arquivos HTML.
+Com base nas informações fornecidas, proponho o seguinte plano e diagrama de classes:
+### Plano:
+1. **Leitura do arquivo HTML**:
+- O usuário insere o caminho do arquivo HTML.
+- O programa lê cada linha do arquivo e despreza as linhas em branco.
+2. **Extração e validação das tags**:
+- Utilizaremos uma pilha para guardar as tags de início encontradas.
+- Ao encontrar uma tag de início, ela é empilhada.
+- Se uma tag final é encontrada, o topo da pilha é verificado. Se o topo da pilha
+corresponde à tag final, a tag é desempilhada. Caso contrário, um erro é registrado.
+- Para as singleton tags, elas são simplesmente registradas e não são empilhadas.
+3. **Relatório de validação**:
+- Após ler todo o arquivo, se a pilha estiver vazia e não houver erros registrados, o
+arquivo é considerado bem formatado.
+- Caso contrário, o programa apresentará os erros encontrados.
+4. **Relatório de frequência das tags**:
+- Um mapa ou tabela de dispersão é usado para armazenar a frequência de cada tag.
+- Após a validação, se o arquivo estiver bem formatado, a tabela é apresentada ao
+usuário, ordenada por nome de tag.
+### Diagrama de Classes:
+1. **Classe `HTMLValidator`**:
+- **Métodos**:
+- `loadFile(String path)`: Carrega o arquivo HTML.
+- `validate()`: Valida o arquivo HTML e gera o relatório.
+- `showFrequencies()`: Mostra a frequência de cada tag.
+2. **Classe `TagStack`** (Extensão da classe Pilha):
+- **Métodos**:
+- `push(String tag)`: Empilha uma tag.
+- `pop()`: Desempilha uma tag.
+- `peek()`: Verifica o topo da pilha sem desempilhar.
+3. **Classe `TagFrequencyTable`** (Tabela de dispersão):
+- **Métodos**:
+- `increment(String tag)`: Incrementa a contagem da tag.
+- `getFrequency(String tag)`: Retorna a frequência da tag.
+- `getAllTags()`: Retorna todas as tags.
+4. **Classe `Tag`**:
+- **Atributos**:
+- `name`: Nome da tag.
+- `isSingleton`: Booleano para verificar se a tag é singleton.
+- **Métodos**:
+- `getName()`: Retorna o nome da tag.
+- `isSingleton()`: Retorna verdadeiro se a tag for singleton.
+5. **Interface Gráfica**:
+- **Atributos**:
+- Componentes da GUI (como campos de texto, botões, etc.)
+- **Métodos**:
+- `showError(String error)`: Mostra um erro ao usuário.
+- `showValid()`: Indica ao usuário que o arquivo é válido.
+- `displayFrequencies(TagFrequencyTable table)`: Mostra a tabela de frequências.
+### Observações:
+- Para a validação de tags, a estrutura de pilha é ideal, pois ela permite verificar se as tags
+estão sendo fechadas na ordem correta.
+- A tabela de dispersão é perfeita para armazenar a frequência de cada tag, pois permite
+acesso rápido e inserção de novas tags.
+- As demais estruturas de dados mencionadas (como Lista estática, Fila, Árvore binária,
+etc.) não parecem ser necessárias diretamente para este projeto, a menos que sejam partes
+internas das estruturas principais mencionadas (Pilha e Tabela de dispersão).
+Esse é um plano básico e um diagrama de classes para o seu projeto. Você pode precisar
+de classes e métodos adicionais para implementar detalhes específicos ou funcionalidades
+adicionais.
