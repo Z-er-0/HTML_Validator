@@ -1,1 +1,2 @@
-Nomes: William Bollner e José Rogério Leite Filho
+Autores: José Rogério Leite Filho e William Bollner
+
